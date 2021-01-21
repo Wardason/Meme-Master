@@ -1,0 +1,6 @@
+pip install discord
+pip install discord.ext
+pip install praw
+pip install random
+pip install json
+pip install os
