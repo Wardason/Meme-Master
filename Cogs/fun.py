@@ -12,10 +12,5 @@ class Fun(commands.Cog):
         percent = "You are " + str(number) + "% gay🌈"
         await ctx.channel.send(percent)
 
-    @commands.command()
-    async def hi(self, ctx):
-        await ctx.channel.send("hi")
-
-
 def setup(bot):
     bot.add_cog(Fun(bot))
