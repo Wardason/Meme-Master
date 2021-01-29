@@ -17,7 +17,6 @@ class Config(commands.Cog):
             embed.add_field(name=":robot: Reddit", value="`$help reddit`", inline=True)
             embed.add_field(name=":joy: Memes", value="`$help meme`", inline=True)
             embed.add_field(name=":smile: Fun", value="`$help fun`", inline=True)
-            embed.add_field(name=":microphone:  music", value="`$help music`", inline=True)
             embed.add_field(name=":game_die: Gamble", value="`$help gamble`", inline=True)
             embed.add_field(name=":gear:  Config", value="`$help config`", inline=True)
             embed.set_footer(text="use $ before each command!")
@@ -51,12 +50,6 @@ class Config(commands.Cog):
         elif category == "fun":
             embed = discord.Embed(title=":smile: Fun commands")
             embed.add_field(name="Commands:", value="`gay`, `insult`", inline=True)
-            embed.set_footer(text="use $ before each command!")
-            await ctx.send(embed=embed)
-
-        elif category == "music":
-            embed = discord.Embed(title=":microphone:  Music commands")
-            embed.add_field(name="Commands:", value="`song`", inline=True)
             embed.set_footer(text="use $ before each command!")
             await ctx.send(embed=embed)
 
