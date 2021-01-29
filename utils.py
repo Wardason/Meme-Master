@@ -11,3 +11,9 @@ async def get_momma_jokes():
     return insult
 
 
+async def get_song():
+    with open(os.path.join("data/songs.json"), encoding="utf-8") as song_file:
+        songs = json.load(song_file)
+        songs = songs["songs"]
+    songs = random.choice(list(songs))
+    return songs

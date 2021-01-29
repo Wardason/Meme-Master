@@ -1,4 +1,5 @@
 from discord.ext import commands
+import discord
 
 
 class Basic(commands.Cog):
@@ -11,17 +12,16 @@ class Basic(commands.Cog):
         await ctx.send("Please check with $help the usage of this command")
 
     @commands.command(brief="The bot developer")
-    async def Leonard(self, ctx):
-        await ctx.send("Warda")
+    async def developer(self, ctx):
+        embed = discord.Embed()
+        embed.add_field(name="", value="")
+        await ctx.send("This bot is developed by Leonard Warda. Find me on:\nTwitter: Wardason_\nInstagram: "
+                       "leonardwarda\nGithub: Wardason")
 
-    @commands.command(brief="Sends a invite in the channel")
-    @commands.guild_only()
-    async def invite(self, ctx):
-        link = await ctx.channel.create_invite(max_age=1)
-        await ctx.send(link)
-
+    @commands.command(brief="F for lasse")
+    async def lucylover(self, ctx):
+        await ctx.channel.send("https://imgur.com/ndrIfTz")
 
 
 def setup(bot):
     bot.add_cog(Basic(bot))
-

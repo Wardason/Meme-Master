@@ -14,35 +14,13 @@ class Reddit(commands.Cog):
         self.bot = bot
 
     @commands.command()
-    async def meme(self, ctx):
-        async with ctx.channel.typing():
-            subreddit = reddit.subreddit("memes")
-            all_subs = []
-
-            top = subreddit.top(limit=30)
-
-            for submission in top:
-                all_subs.append(submission)
-
-            random_sub = random.choice(all_subs)
-            name = random_sub.title
-            url = random_sub.url
-
-            em = discord.Embed(title=name)
-            em.set_image(url=url)
-
-            await ctx.send(embed=em)
-
-
-    @commands.command()
     async def nudes(self, ctx):
         async with ctx.channel.typing():
             subreddit = reddit.subreddit("nudes")
             all_subs = []
+            hot = subreddit.hot(limit=75)
 
-            top = subreddit.top(limit=30)
-
-            for submission in top:
+            for submission in hot:
                 all_subs.append(submission)
 
             random_sub = random.choice(all_subs)
@@ -51,16 +29,49 @@ class Reddit(commands.Cog):
 
             em = discord.Embed(title=name)
             em.set_image(url=url)
-
             await ctx.send(embed=em)
 
+    @commands.command()
+    async def boobs(self, ctx):
+        async with ctx.channel.typing():
+            subreddit = reddit.subreddit("boobs")
+            all_subs = []
+            hot = subreddit.hot(limit=50)
+
+            for submission in hot:
+                all_subs.append(submission)
+
+            random_sub = random.choice(all_subs)
+            name = random_sub.title
+            url = random_sub.url
+
+            em = discord.Embed(title=name)
+            em.set_image(url=url)
+            await ctx.send(embed=em)
+
+    @commands.command()
+    async def ass(self, ctx):
+        async with ctx.channel.typing():
+            subreddit = reddit.subreddit("ass")
+            all_subs = []
+            hot = subreddit.hot(limit=50)
+
+            for submission in hot:
+                all_subs.append(submission)
+
+            random_sub = random.choice(all_subs)
+            name = random_sub.title
+            url = random_sub.url
+
+            em = discord.Embed(title=name)
+            em.set_image(url=url)
+            await ctx.send(embed=em)
 
     @commands.command()
     async def mgk(self, ctx):
         async with ctx.channel.typing():
             subreddit = reddit.subreddit("MachineGunKelly")
             all_subs = []
-
             top = subreddit.top(limit=50)
 
             for submission in top:
@@ -72,14 +83,25 @@ class Reddit(commands.Cog):
 
             em = discord.Embed(title=name)
             em.set_image(url=url)
-
             await ctx.send(embed=em)
 
+    @commands.command()
+    async def redditmeme(self, ctx):
+        async with ctx.channel.typing():
+            subreddit = reddit.subreddit("memes")
+            all_subs = []
+            hot = subreddit.hot(limit=50)
 
+            for submission in hot:
+                all_subs.append(submission)
 
+            random_sub = random.choice(all_subs)
+            name = random_sub.title
+            url = random_sub.url
 
-
-
+            em = discord.Embed(title=name)
+            em.set_image(url=url)
+            await ctx.send(embed=em)
 
 
 

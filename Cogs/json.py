@@ -1,10 +1,9 @@
 from discord.ext import commands
-import discord
-from utils import get_momma_jokes
+from utils import get_momma_jokes, get_song
 
 
 
-class MamaJokes(commands.Cog):
+class Data(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
@@ -13,6 +12,11 @@ class MamaJokes(commands.Cog):
         insult = await get_momma_jokes()
         await ctx.send(insult)
 
+    @commands.command(brief="")
+    async def song(self, ctx):
+        songs = await get_song()
+        await ctx.send(songs)
+
 
 def setup(bot):
-    bot.add_cog(MamaJokes(bot))
+    bot.add_cog(Data(bot))
