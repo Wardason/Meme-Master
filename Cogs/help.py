@@ -6,10 +6,6 @@ class Config(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    @commands.command()
-    async def hi(self, ctx):
-        await ctx.channel.send("hi")
-
     @commands.command(brief="The bot developer")
     async def help(self, ctx, category=None):
 
