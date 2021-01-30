@@ -40,7 +40,7 @@ class Fun(commands.Cog):
             answer_from_8ball = random.choice(messages)
 
             color = random.randint(0, 0xffffff)
-            embed = discord.Embed(title=":8ball: prediction", description=answer_from_8ball, colour=color)
+            embed = discord.Embed(title="8ball prediction", description=answer_from_8ball, colour=color)
             await ctx.send(embed=embed)
 
 
