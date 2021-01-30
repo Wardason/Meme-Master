@@ -38,10 +38,7 @@ class Fun(commands.Cog):
             await ctx.send("What are you asking the 8ball?")
         else:
             answer_from_8ball = random.choice(messages)
-
-            color = random.randint(0, 0xffffff)
-            embed = discord.Embed(title="8ball prediction", description=answer_from_8ball, colour=color)
-            await ctx.send(embed=embed)
+            await ctx.send(answer_from_8ball)
 
 
 def setup(bot):
