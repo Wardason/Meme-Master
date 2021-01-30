@@ -7,7 +7,7 @@ class Fact(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    @commands.command(brief="Returns your gay rate in percent")
+    @commands.command()
     async def fact(self, ctx, animal: str):
         if (animal := animal.lower()) in ("dog", "cat", "panda", "fox", "bird", "koala"):
 
