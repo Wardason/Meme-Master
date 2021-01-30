@@ -19,6 +19,12 @@ class Fun(commands.Cog):
         percent = "You are " + str(number) + "% gay🌈"
         await ctx.channel.send(percent)
 
+    @commands.command(brief="Returns your simp rate in percent")
+    async def simp(self, ctx):
+        number = random.randint(0, 100)
+        percent = "You are " + str(number) + "% simp"
+        await ctx.channel.send(percent)
+
     @commands.command(name="8ball")
     async def ball(self, ctx, question=None):
         if question is None:
