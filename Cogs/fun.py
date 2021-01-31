@@ -1,6 +1,7 @@
 from discord.ext import commands
 import discord
 import random
+import math
 
 messages = [":8ball:As I see it, yes.", ":8ball: yes!!!!", ":8ball:Yes – definitely.", ":8ball: sure, why not",
             ":8ball: hell to the yes",
