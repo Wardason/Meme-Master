@@ -13,59 +13,6 @@ class Reddit(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    @commands.command()
-    async def nudes(self, ctx):
-        async with ctx.channel.typing():
-            subreddit = reddit.subreddit("nudes")
-            all_subs = []
-            hot = subreddit.hot(limit=75)
-
-            for submission in hot:
-                all_subs.append(submission)
-
-            random_sub = random.choice(all_subs)
-            name = random_sub.title
-            url = random_sub.url
-
-            em = discord.Embed(title=name)
-            em.set_image(url=url)
-            await ctx.send(embed=em)
-
-    @commands.command()
-    async def boobs(self, ctx):
-        async with ctx.channel.typing():
-            subreddit = reddit.subreddit("boobs")
-            all_subs = []
-            hot = subreddit.hot(limit=50)
-
-            for submission in hot:
-                all_subs.append(submission)
-
-            random_sub = random.choice(all_subs)
-            name = random_sub.title
-            url = random_sub.url
-
-            em = discord.Embed(title=name)
-            em.set_image(url=url)
-            await ctx.send(embed=em)
-
-    @commands.command()
-    async def ass(self, ctx):
-        async with ctx.channel.typing():
-            subreddit = reddit.subreddit("ass")
-            all_subs = []
-            hot = subreddit.hot(limit=50)
-
-            for submission in hot:
-                all_subs.append(submission)
-
-            random_sub = random.choice(all_subs)
-            name = random_sub.title
-            url = random_sub.url
-
-            em = discord.Embed(title=name)
-            em.set_image(url=url)
-            await ctx.send(embed=em)
 
     @commands.command()
     async def mgk(self, ctx):
