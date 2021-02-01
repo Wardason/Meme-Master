@@ -1,7 +1,7 @@
 from discord.ext import commands
 import discord
 import random
-import math
+import time
 
 messages = [":8ball:As I see it, yes.", ":8ball: yes!!!!", ":8ball:Yes – definitely.", ":8ball: sure, why not",
             ":8ball: hell to the yes",
@@ -40,6 +40,25 @@ class Fun(commands.Cog):
         else:
             answer_from_8ball = random.choice(messages)
             await ctx.send(answer_from_8ball)
+
+    @commands.command(name="hack")
+    async def hack(self, ctx, target=None):
+        if target is None:
+            await ctx.send("Who are we hacking?")
+        else:
+            await ctx.send(f"Hacking {target} now...")
+            time.sleep(1)
+            await ctx.send("Finding Ip Adress")
+            time.sleep(2)
+            await ctx.send("Ip Adress: 168.212. 226.204")
+            time.sleep(1)
+            await ctx.send("Selling data to the Goverment")
+            time.sleep(1)
+            await ctx.send("Reporting account to discord for breaking TOS...")
+            time.sleep(1)
+            await ctx.send(f"Finished hacking {target} \n Congrats")
+
+
 
 
 def setup(bot):
