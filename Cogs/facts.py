@@ -1,5 +1,6 @@
 from discord.ext import commands
 from aiohttp import request
+import wikipedia
 import discord
 
 
@@ -37,6 +38,16 @@ class Fact(commands.Cog):
                     await ctx.send(f"API returned a {response.status} status.")
         else:
             await ctx.send("No facts are available for that animal")
+
+    @commands.command(name="wiki")
+    async def wikipedia(self, ctx, question: str, question2=None):
+        if question2 is None:
+            output = wikipedia.summary(question, sentences=2)
+            await ctx.send(output)
+        else:
+            q = question + question2
+            output2 = wikipedia.summary(q, sentences=2)
+            await ctx.send(output2)
 
 
 def setup(bot):
