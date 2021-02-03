@@ -15,8 +15,6 @@ else:
 token = configData["Token"]
 prefix = configData["Prefix"]
 
-
-
 bot = commands.Bot(command_prefix=prefix, intents=discord.Intents.all())
 bot.remove_command('help')
 

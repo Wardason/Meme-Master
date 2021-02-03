@@ -3,6 +3,7 @@ from discord import Member, Embed
 from discord.ext import commands
 
 
+
 class Admin(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
@@ -63,9 +64,15 @@ class Admin(commands.Cog):
         await ctx.send(embed=embed)
 
     @commands.command()
-    async def vote(self,ctx):
+    async def vote(self, ctx):
         msg = 'You can support me here --> https://top.gg/bot/782274959849684993/vote'
         await ctx.send(msg)
+
+    @commands.command()
+    async def ping(self, ctx):
+        await ctx.send(f'My ping is {self.bot.latency}!')
+
+
 
 
 def setup(bot):
