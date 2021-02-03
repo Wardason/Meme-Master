@@ -62,7 +62,7 @@ class Config(commands.Cog):
 
         elif category == "config":
             embed = discord.Embed(title=":gear:  Config commands")
-            embed.add_field(name="Commands:", value="`serverinfo`. `userinfo`, `vote`", inline=True)
+            embed.add_field(name="Commands:", value="`serverinfo`. `userinfo`, `ping`, `vote`", inline=True)
             embed.add_field(name=":warning: Important :warning: ", value="For this command the bot needs Admin "
                                                                          "permissions", inline=False)
             embed.set_footer(text="use $ before each command!")
