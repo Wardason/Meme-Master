@@ -40,13 +40,13 @@ class Fact(commands.Cog):
             await ctx.send("No facts are available for that animal")
 
     @commands.command(name="wiki")
-    async def wikipedia(self, ctx, question: str, question2=None):
+    async def wikipedia(self, ctx, question1: str, question2=None):
         if question2 is None:
-            output = wikipedia.summary(question, sentences=2)
+            output = wikipedia.summary(question1, sentences=2)
             await ctx.send(output)
         else:
-            q = question + question2
-            output2 = wikipedia.summary(q, sentences=2)
+            question = question1 + question2
+            output2 = wikipedia.summary(question, sentences=2)
             await ctx.send(output2)
 
 

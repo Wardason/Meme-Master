@@ -24,7 +24,8 @@ class Config(commands.Cog):
 
         elif category == "facts":
             embed = discord.Embed(title=":nerd: Fact commands")
-            embed.add_field(name="Commands:", value="`fact dog`, `fact cat`, ` fact panda`, `fact fox`, `fact bird`, "
+            embed.add_field(name="Commands:", value="`wiki`, `fact dog`, `fact cat`, ` fact panda`, `fact fox`, "
+                                                    "`fact bird`, "
                                                     "`fact koala`", inline=True)
             embed.set_footer(text="use $ before each command!")
             await ctx.send(embed=embed)
