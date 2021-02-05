@@ -70,7 +70,9 @@ class Admin(commands.Cog):
 
     @commands.command()
     async def ping(self, ctx):
-        await ctx.send(f'My ping is {self.bot.latency}!')
+        ping = self.bot.latency
+        ping = "%.2f" % ping
+        await ctx.send(f'My ping is {ping}!')
 
 
 
