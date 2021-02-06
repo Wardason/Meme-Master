@@ -2,6 +2,7 @@ from discord.ext import commands
 from aiohttp import request
 import wikipedia
 import discord
+import random
 
 
 class Fact(commands.Cog):
@@ -28,7 +29,7 @@ class Fact(commands.Cog):
 
                     embed = discord.Embed(title=f"{animal.title()} fact",
                                           description=data["fact"],
-                                          color=discord.Color.dark_purple())
+                                          color=random.randint(0, 0xffffff))
                     if image_link is not None:
                         embed.set_image(url=image_link)
 

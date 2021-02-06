@@ -13,6 +13,26 @@ class Reddit(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
+    @commands.command()
+    async def meme(self, ctx):
+        async with ctx.channel.typing():
+            subreddit = reddit.subreddit("memes")
+            all_subs = []
+            hot = subreddit.hot(limit=50)
+
+            for submission in hot:
+                all_subs.append(submission)
+
+            random_sub = random.choice(all_subs)
+            name = random_sub.title
+            url = random_sub.url
+            votes = random_sub.score
+            comments = random_sub.num_comments
+
+            em = discord.Embed(title=name, colour=random.randint(0, 0xffffff))
+            em.set_image(url=url)
+            em.set_footer(text=f"👍{votes}|💬{comments}")
+            await ctx.send(embed=em)
 
     @commands.command()
     async def mgk(self, ctx):
@@ -28,28 +48,9 @@ class Reddit(commands.Cog):
             name = random_sub.title
             url = random_sub.url
 
-            em = discord.Embed(title=name)
+            em = discord.Embed(title=name, colour=random.randint(0, 0xffffff))
             em.set_image(url=url)
             await ctx.send(embed=em)
-
-    @commands.command()
-    async def redditmeme(self, ctx):
-        async with ctx.channel.typing():
-            subreddit = reddit.subreddit("memes")
-            all_subs = []
-            hot = subreddit.hot(limit=50)
-
-            for submission in hot:
-                all_subs.append(submission)
-
-            random_sub = random.choice(all_subs)
-            name = random_sub.title
-            url = random_sub.url
-
-            em = discord.Embed(title=name)
-            em.set_image(url=url)
-            await ctx.send(embed=em)
-
 
 
 def setup(bot):

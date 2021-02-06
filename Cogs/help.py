@@ -1,5 +1,6 @@
 from discord.ext import commands
 import discord
+import random
 
 
 class Config(commands.Cog):
@@ -10,7 +11,7 @@ class Config(commands.Cog):
     async def help(self, ctx, category=None):
 
         if category is None:
-            embed = discord.Embed(title="Meme Master Command List", description="")
+            embed = discord.Embed(title="Meme Master Command List", description="", colour=random.randint(0, 0xffffff))
 
             embed.add_field(name=":nerd:  Facts", value="`$help facts`", inline=True)
             embed.add_field(name=":camera: Image", value="`$help image`", inline=True)
@@ -23,7 +24,7 @@ class Config(commands.Cog):
             await ctx.send(embed=embed)
 
         elif category == "facts":
-            embed = discord.Embed(title=":nerd: Fact commands")
+            embed = discord.Embed(title=":nerd: Fact commands", colour=random.randint(0, 0xffffff))
             embed.add_field(name="Commands:", value="`wiki`, `fact dog`, `fact cat`, ` fact panda`, `fact fox`, "
                                                     "`fact bird`, "
                                                     "`fact koala`", inline=True)
@@ -31,37 +32,37 @@ class Config(commands.Cog):
             await ctx.send(embed=embed)
 
         elif category == "image":
-            embed = discord.Embed(title=":camera: Image commands")
+            embed = discord.Embed(title=":camera: Image commands", colour=random.randint(0, 0xffffff))
             embed.add_field(name="Commands:", value="`dog`, `cat`, `panda`, `bird`, `fox`, `koala`", inline=True)
             embed.set_footer(text="use $ before each command!")
             await ctx.send(embed=embed)
 
         elif category == "reddit":
-            embed = discord.Embed(title=":robot: Reddit commands")
-            embed.add_field(name="Commands:", value="`mgk`, `redditmeme`", inline=True)
+            embed = discord.Embed(title=":robot: Reddit commands", colour=random.randint(0, 0xffffff))
+            embed.add_field(name="Commands:", value="`mgk`", inline=True)
             embed.set_footer(text="use $ before each command!")
             await ctx.send(embed=embed)
 
         elif category == "meme":
-            embed = discord.Embed(title=":joy: Memes commands")
+            embed = discord.Embed(title=":joy: Memes commands", colour=random.randint(0, 0xffffff))
             embed.add_field(name="Commands:", value="`meme`, `redditmeme`", inline=True)
             embed.set_footer(text="use $ before each command!")
             await ctx.send(embed=embed)
 
         elif category == "fun":
-            embed = discord.Embed(title=":smile: Fun commands")
+            embed = discord.Embed(title=":smile: Fun commands", colour=random.randint(0, 0xffffff))
             embed.add_field(name="Commands:", value="`8ball`,`gay`, `simp`,`hack`, `insult`", inline=True)
             embed.set_footer(text="use $ before each command!")
             await ctx.send(embed=embed)
 
         elif category == "gamble":
-            embed = discord.Embed(title=":game_die: Gamble commands")
+            embed = discord.Embed(title=":game_die: Gamble commands", colour=random.randint(0, 0xffffff))
             embed.add_field(name="Commands:", value="`random`, `dice`, `coin`", inline=True)
             embed.set_footer(text="use $ before each command!")
             await ctx.send(embed=embed)
 
         elif category == "config":
-            embed = discord.Embed(title=":gear:  Config commands")
+            embed = discord.Embed(title=":gear:  Config commands", colour=random.randint(0, 0xffffff))
             embed.add_field(name="Commands:", value="`serverinfo`. `userinfo`, `ping`, `vote`", inline=True)
             embed.add_field(name=":warning: Important :warning: ", value="For this command the bot needs Admin "
                                                                          "permissions", inline=False)
@@ -69,7 +70,7 @@ class Config(commands.Cog):
             await ctx.send(embed=embed)
 
         elif category == "nsfw":
-            embed = discord.Embed(title=":smirk: NSFW Commands")
+            embed = discord.Embed(title=":smirk: NSFW Commands", colour=random.randint(0, 0xffffff))
             embed.set_footer(text="use $ before each command!")
             await ctx.send(embed=embed)
 

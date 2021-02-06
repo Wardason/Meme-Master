@@ -1,6 +1,7 @@
 from typing import Optional
 from discord import Member, Embed
 from discord.ext import commands
+import random
 
 
 
@@ -33,7 +34,7 @@ class Admin(commands.Cog):
 
     @commands.command(brief="")
     async def serverinfo(self, ctx):
-        embed = Embed(title="Server information")
+        embed = Embed(title="Server information", colour=random.randint(0, 0xffffff))
 
         embed.set_thumbnail(url=ctx.guild.icon_url)
 

@@ -20,8 +20,7 @@ class Fun(commands.Cog):
         number = random.randint(0, 100)
         percent = "You are " + str(number) + "% gay :gay_pride_flag:"
 
-        color = random.randint(0, 0xffffff)
-        embed = discord.Embed(title="gay r8 machine", description=percent, colour=color)
+        embed = discord.Embed(title="gay r8 machine", description=percent, colour=random.randint(0, 0xffffff))
         await ctx.channel.send(embed=embed)
 
     @commands.command(brief="Returns your simp rate in percent")
@@ -29,8 +28,7 @@ class Fun(commands.Cog):
         number = random.randint(0, 100)
         percent = "You are " + str(number) + "% simp"
 
-        color = random.randint(0, 0xffffff)
-        embed = discord.Embed(title="simp r8 machine", description=percent, colour=color)
+        embed = discord.Embed(title="simp r8 machine", description=percent, colour=random.randint(0, 0xffffff))
         await ctx.channel.send(embed=embed)
 
     @commands.command(name="8ball")
