@@ -1,8 +1,7 @@
-from random import random
-
 from discord.ext import commands
 import aiohttp
 import discord
+from random import random
 import random
 
 

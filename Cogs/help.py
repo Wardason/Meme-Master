@@ -39,7 +39,7 @@ class Config(commands.Cog):
 
         elif category == "reddit":
             embed = discord.Embed(title=":robot: Reddit commands", colour=random.randint(0, 0xffffff))
-            embed.add_field(name="Commands:", value="`mgk`", inline=True)
+            embed.add_field(name="Commands:", value="`foodporn`, `news`,`mgk`", inline=True)
             embed.set_footer(text="use $ before each command!")
             await ctx.send(embed=embed)
 
