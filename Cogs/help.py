@@ -18,13 +18,14 @@ class Config(commands.Cog):
             embed.add_field(name=":joy: Memes", value="`$help meme`", inline=True)
             embed.add_field(name=":smile: Fun", value="`$help fun`", inline=True)
             embed.add_field(name=":game_die: Gamble", value="`$help gamble`", inline=True)
+            embed.add_field(name=":tools: Utility", value="`$help utility`", inline=True)
             embed.add_field(name=":gear:  Config", value="`$help config`", inline=True)
             embed.set_footer(text="use $ before each command!")
             await ctx.send(embed=embed)
 
         elif category == "facts":
             embed = discord.Embed(title=":nerd: Fact commands", colour=random.randint(0, 0xffffff))
-            embed.add_field(name="Commands:", value="`wiki`, `fact dog`, `fact cat`, ` fact panda`, `fact fox`, "
+            embed.add_field(name="Commands:", value="`fact dog`, `fact cat`, ` fact panda`, `fact fox`, "
                                                     "`fact bird`, "
                                                     "`fact koala`", inline=True)
             embed.set_footer(text="use $ before each command!")
@@ -52,6 +53,12 @@ class Config(commands.Cog):
         elif category == "gamble":
             embed = discord.Embed(title=":game_die: Gamble commands", colour=random.randint(0, 0xffffff))
             embed.add_field(name="Commands:", value="`random`, `dice`, `coin`", inline=True)
+            embed.set_footer(text="use $ before each command!")
+            await ctx.send(embed=embed)
+
+        elif category == "utility":
+            embed = discord.Embed(title=":tools: Utility commands", colour=random.randint(0, 0xffffff))
+            embed.add_field(name="Commands:", value="`weather `, `news`, `wiki`", inline=True)
             embed.set_footer(text="use $ before each command!")
             await ctx.send(embed=embed)
 
