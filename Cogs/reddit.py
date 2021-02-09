@@ -1,5 +1,4 @@
 from datetime import datetime
-
 from discord.ext import commands
 import praw
 import random
@@ -19,6 +18,27 @@ class Reddit(commands.Cog):
     async def meme(self, ctx):
         async with ctx.channel.typing():
             subreddit = reddit.subreddit("memes")
+            all_subs = []
+            hot = subreddit.hot(limit=50)
+
+            for submission in hot:
+                all_subs.append(submission)
+
+            random_sub = random.choice(all_subs)
+            name = random_sub.title
+            url = random_sub.url
+            votes = random_sub.score
+            comments = random_sub.num_comments
+
+            em = discord.Embed(title=name, colour=random.randint(0, 0xffffff))
+            em.set_image(url=url)
+            em.set_footer(text=f"👍{votes}|💬{comments}")
+            await ctx.send(embed=em)
+
+    @commands.command(name="animeme")
+    async def anime(self, ctx):
+        async with ctx.channel.typing():
+            subreddit = reddit.subreddit("Animemes")
             all_subs = []
             hot = subreddit.hot(limit=50)
 
@@ -74,6 +94,27 @@ class Reddit(commands.Cog):
 
             em = discord.Embed(title=name, colour=random.randint(0, 0xffffff))
             em.set_footer(text=time)
+            await ctx.send(embed=em)
+
+    @commands.command(name="facepalm")
+    async def facepalm(self, ctx):
+        async with ctx.channel.typing():
+            subreddit = reddit.subreddit("facepalm")
+            all_subs = []
+            hot = subreddit.hot(limit=50)
+
+            for submission in hot:
+                all_subs.append(submission)
+
+            random_sub = random.choice(all_subs)
+            name = random_sub.title
+            url = random_sub.url
+            votes = random_sub.score
+            comments = random_sub.num_comments
+
+            em = discord.Embed(title=name, colour=random.randint(0, 0xffffff))
+            em.set_image(url=url)
+            em.set_footer(text=f"👍{votes}|💬{comments}")
             await ctx.send(embed=em)
 
     @commands.command(name="mgk")

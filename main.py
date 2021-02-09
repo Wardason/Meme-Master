@@ -7,13 +7,14 @@ if os.path.exists(os.getcwd() + "/config.json"):
     with open("./config.json") as f:
         configData = json.load(f)
 else:
-    configTemplate = {"Token": "", "Prefix": "$"}
+    configTemplate = {"Token": "", "Prefix": "$", "Api_Key": ""}
 
     with open(os.getcwd() + "/config.json", "w+") as f:
         json.dump(configTemplate, f)
 
 token = configData["Token"]
 prefix = configData["Prefix"]
+key = configData["Api_Key"]
 
 bot = commands.Bot(command_prefix=prefix, intents=discord.Intents.all())
 bot.remove_command('help')

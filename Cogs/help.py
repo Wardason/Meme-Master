@@ -15,7 +15,6 @@ class Config(commands.Cog):
 
             embed.add_field(name=":nerd:  Facts", value="`$help facts`", inline=True)
             embed.add_field(name=":camera: Image", value="`$help image`", inline=True)
-            embed.add_field(name=":robot: Reddit", value="`$help reddit`", inline=True)
             embed.add_field(name=":joy: Memes", value="`$help meme`", inline=True)
             embed.add_field(name=":smile: Fun", value="`$help fun`", inline=True)
             embed.add_field(name=":game_die: Gamble", value="`$help gamble`", inline=True)
@@ -33,19 +32,14 @@ class Config(commands.Cog):
 
         elif category == "image":
             embed = discord.Embed(title=":camera: Image commands", colour=random.randint(0, 0xffffff))
-            embed.add_field(name="Commands:", value="`dog`, `cat`, `panda`, `bird`, `fox`, `koala`", inline=True)
-            embed.set_footer(text="use $ before each command!")
-            await ctx.send(embed=embed)
-
-        elif category == "reddit":
-            embed = discord.Embed(title=":robot: Reddit commands", colour=random.randint(0, 0xffffff))
-            embed.add_field(name="Commands:", value="`foodporn`, `news`,`mgk`", inline=True)
+            embed.add_field(name="Commands:", value="`foodporn`", inline=True)
+            embed.add_field(name="Animals:", value="`dog`, `cat`, `panda`, `bird`, `fox`, `koala`", inline=False)
             embed.set_footer(text="use $ before each command!")
             await ctx.send(embed=embed)
 
         elif category == "meme":
             embed = discord.Embed(title=":joy: Memes commands", colour=random.randint(0, 0xffffff))
-            embed.add_field(name="Commands:", value="`meme`, `redditmeme`", inline=True)
+            embed.add_field(name="Commands:", value="`meme`, `animeme`, `facepalm`", inline=True)
             embed.set_footer(text="use $ before each command!")
             await ctx.send(embed=embed)
 
