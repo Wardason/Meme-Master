@@ -16,7 +16,7 @@ token = configData["Token"]
 prefix = configData["Prefix"]
 key = configData["Api_Key"]
 
-bot = commands.Bot(command_prefix=prefix, intents=discord.Intents.all())
+bot = commands.Bot(command_prefix=prefix)
 bot.remove_command('help')
 
 

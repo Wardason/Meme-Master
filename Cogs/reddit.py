@@ -7,7 +7,7 @@ import discord
 userAgent = 'News submit bot 1.0 by /u/fuiver'
 clientId = 'Oth4BZatiWYhcQ'
 clientSecret = 'TlGp13Vb7-jPb2BS22cmKcyQVZtcMg'
-reddit = praw.Reddit(user_agent=userAgent, client_id=clientId, client_secret=clientSecret,check_for_async=False)
+reddit = praw.Reddit(user_agent=userAgent, client_id=clientId, client_secret=clientSecret, check_for_async=False)
 
 
 class Reddit(commands.Cog):

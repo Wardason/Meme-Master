@@ -1,6 +1,7 @@
 from typing import Optional
 from discord import Member, Embed
 from discord.ext import commands
+import discord
 import random
 
 
@@ -11,7 +12,7 @@ class Admin(commands.Cog):
 
     @commands.command(brief="")
     async def userinfo(self, ctx, target: Optional[Member]):
-        target = target or ctx.author
+        target = target or ctx.author#
 
         embed = Embed(title="User Information",
                       color=target.color)
@@ -47,11 +48,11 @@ class Admin(commands.Cog):
                   ("Owner", ctx.guild.owner, True),
                   ("Region", ctx.guild.region, True),
                   ("Created at", ctx.guild.created_at.strftime("%d/%m/%Y %H:%M:%S"), True),
-                  ("Members", len(ctx.guild.members), True),
-                  ("Humans", len(list(filter(lambda m: not m.bot, ctx.guild.members))), True),
+                  # ("Members", len(ctx.guild.members), True),
+                  # ("Humans", len(list(filter(lambda m: not m.bot, ctx.guild.members))), True),
                   ("Bots", len(list(filter(lambda m: m.bot, ctx.guild.members))), True),
                   ("Banned members", len(await ctx.guild.bans()), True),
-                  ("Statuses", f"🟢 {statuses[0]} 🟠 {statuses[1]} 🔴 {statuses[2]} ⚪ {statuses[3]}", True),
+                  # ("Statuses", f"🟢 {statuses[0]} 🟠 {statuses[1]} 🔴 {statuses[2]} ⚪ {statuses[3]}", True),
                   ("Text channels", len(ctx.guild.text_channels), True),
                   ("Voice channels", len(ctx.guild.voice_channels), True),
                   ("Categories", len(ctx.guild.categories), True),
