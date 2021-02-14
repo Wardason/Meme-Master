@@ -1,7 +1,6 @@
 from typing import Optional
 from discord import Member, Embed
 from discord.ext import commands
-import discord
 import random
 
 
