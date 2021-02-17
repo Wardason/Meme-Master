@@ -4,14 +4,13 @@ from discord.ext import commands
 import random
 
 
-
 class Admin(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
     @commands.command(brief="")
     async def userinfo(self, ctx, target: Optional[Member]):
-        target = target or ctx.author#
+        target = target or ctx.author  #
 
         embed = Embed(title="User Information",
                       color=target.color)
@@ -20,9 +19,9 @@ class Admin(commands.Cog):
         fields = [("Name", str(target), False),
                   ("ID", target.id, True),
                   ("Bot?", target.bot, True),
-                  ("Status", str(target.status).title(), True),
-                  ("Activity", f"{str(target.activity.type).split('.')[-1].title() if target.activity else 'N/A'} "
-                               f"{target.activity.name if target.activity else ''}", True),
+                  # ("Status", str(target.status).title(), True),
+                  # ("Activity", f"{str(target.activity.type).split('.')[-1].title() if target.activity else 'N/A'} "
+                  #             f"{target.activity.name if target.activity else ''}", True),
                   ("Top role", target.top_role.mention, True),
                   ("Created at", target.created_at.strftime("%d/%m/%Y %H:%M:%S"), True),
                   ("Joined at", target.joined_at.strftime("%d/%m/%Y %H:%M:%S"), True),
@@ -44,12 +43,11 @@ class Admin(commands.Cog):
                     len(list(filter(lambda m: str(m.status) == "offline", ctx.guild.members)))]
 
         fields = [("ID", ctx.guild.id, True),
-                  ("Owner", ctx.guild.owner, True),
                   ("Region", ctx.guild.region, True),
                   ("Created at", ctx.guild.created_at.strftime("%d/%m/%Y %H:%M:%S"), True),
                   # ("Members", len(ctx.guild.members), True),
                   # ("Humans", len(list(filter(lambda m: not m.bot, ctx.guild.members))), True),
-                  ("Bots", len(list(filter(lambda m: m.bot, ctx.guild.members))), True),
+                  # ("Bots", len(list(filter(lambda m: m.bot, ctx.guild.members))), True),
                   ("Banned members", len(await ctx.guild.bans()), True),
                   # ("Statuses", f"🟢 {statuses[0]} 🟠 {statuses[1]} 🔴 {statuses[2]} ⚪ {statuses[3]}", True),
                   ("Text channels", len(ctx.guild.text_channels), True),
@@ -74,8 +72,6 @@ class Admin(commands.Cog):
         ping = self.bot.latency
         ping = "%.2f" % ping
         await ctx.send(f'My ping is {ping}!')
-
-
 
 
 def setup(bot):
