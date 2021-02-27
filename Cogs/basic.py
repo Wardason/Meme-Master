@@ -20,7 +20,9 @@ class Basic(commands.Cog):
 
     @commands.command(brief="F for lasse")
     async def lucylover(self, ctx):
-        await ctx.channel.send("https://imgur.com/ndrIfTz")
+        pass
+        #await ctx.channel.send("https://imgur.com/ndrIfTz")
+
 
 
 def setup(bot):

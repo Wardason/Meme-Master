@@ -6,7 +6,7 @@ if os.path.exists(os.getcwd() + "/config.json"):
     with open("./config.json") as f:
         configData = json.load(f)
 else:
-    configTemplate = {"Token": "", "Prefix": "$", "Api_Key": ""}
+    configTemplate = {"Token": "", "Prefix": "$", "Api_Key": "", "Reddit_ClientSecret": ""}
 
     with open(os.getcwd() + "/config.json", "w+") as f:
         json.dump(configTemplate, f)
@@ -14,6 +14,7 @@ else:
 token = configData["Token"]
 prefix = configData["Prefix"]
 key = configData["Api_Key"]
+Reddit_clientSecret = configData["Reddit_ClientSecret"]
 
 bot = commands.Bot(command_prefix=prefix)
 bot.remove_command('help')
