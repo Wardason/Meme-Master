@@ -12,7 +12,7 @@ class Data(commands.Cog):
         insult = await get_momma_jokes()
         await ctx.send(insult)
 
-    @commands.command(brief="")
+    @commands.command(brief="returns song")
     async def song(self, ctx):
         songs = await get_song()
         await ctx.send(songs)
