@@ -15,12 +15,5 @@ class Gamble(commands.Cog):
     async def dice(self, ctx):
         no = random.randrange(1, 6)
         await ctx.send(no)
-
-    @commands.command(brief="Either Heads or Tails")
-    async def coin(self, ctx):
-        no = random.randint(0, 1)
-        await ctx.send("Heads" if no == 1 else "Tails")
-
-
 def setup(bot):
     bot.add_cog(Gamble(bot))

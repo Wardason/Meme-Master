@@ -110,6 +110,97 @@ class Economy(commands.Cog):
         await self.update_bank(member, amount, "bank")
         await ctx.send(f"You gave {amount} coins to {member}!")
 
+    @commands.command()
+    async def slots(self, ctx, amount=None):
+        await self.open_account(ctx.author)
+
+        if amount is None:
+            await ctx.send("Please enter the amount")
+            return
+
+        bal = await self.update_bank(ctx.author)
+
+        amount = int(amount)
+        if amount > bal[0]:
+            await ctx.send("You don't have that much money")
+            return
+
+        if amount < 0:
+            await ctx.send("Amount must be positive")
+            return
+
+        final = []
+        for i in range(3):
+            a = random.choice(["🍊", "🍉", "🍍"])
+
+            final.append(a)
+
+        await ctx.send(str(final))
+
+        if final[0] == final[1] == final[2]:
+            await self.update_bank(ctx.author, 5 * amount)
+            await ctx.send(f"You won {5 * amount} Coins!!")
+        else:
+            await self.update_bank(ctx.author, -1 * amount)
+            await ctx.send(f"You lost {-1 *amount} Coins!!")
+
+    @commands.command()
+    async def coin(self, ctx, amount=None, predict=None):
+        await self.open_account(ctx.author)
+
+        if predict is None:
+            await ctx.send("Please enter your prediction (tails, head)")
+            return
+
+        if amount is None:
+            await ctx.send("Please enter the amount")
+            return
+
+        bal = await self.update_bank(ctx.author)
+
+        amount = int(amount)
+        if amount > bal[0]:
+            await ctx.send("You don't have that much money")
+            return
+
+        if amount < 0:
+            await ctx.send("Amount must be positive")
+            return
+
+        if predict == "head":
+            predict = 1
+        elif predict == "tails":
+            predict = 2
+
+        flip = random.randint(1, 2)
+        if flip == predict:
+            await self.update_bank(ctx.author, 2 * amount)
+            await ctx.send(f"You won {2 * amount} Coins!!")
+        else:
+            await self.update_bank(ctx.author, -1 * amount)
+            await ctx.send(f"You lost {-2 * amount} Coins!!")
+
+
+
+    @commands.command()
+    async def rob(self, ctx, member: discord.Member):
+        await self.open_account(ctx.author)
+        await self.open_account(member)
+
+        bal = await self.update_bank(member)
+
+        if bal[0] < 100:
+            await ctx.send("It's not worth it!")
+            return
+
+        earnings = random.randrange(0, bal[0])
+
+
+        await self.update_bank(ctx.author, earnings)
+        await self.update_bank(member, -1*earnings)
+        await ctx.send(f"You roobed and got {earnings} coins from {member}!")
+
+
 
     async def open_account(self, user):
         users = await self.get_bank_data()
