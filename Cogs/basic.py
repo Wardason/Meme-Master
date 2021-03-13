@@ -1,3 +1,4 @@
+import time
 from discord.ext import commands
 import discord
 
@@ -21,6 +22,12 @@ class Basic(commands.Cog):
     @commands.command(brief="F for lasse")
     async def lucylover(self, ctx):
         await ctx.channel.send("https://imgur.com/ndrIfTz")
+
+    @commands.command(name="knecht")
+    async def bene(self, ctx):
+        await ctx.channel.send("https://imgur.com/a/BobfAHs")
+        time.sleep(1)
+        await ctx.channel.send("spaß")
 
 
 
