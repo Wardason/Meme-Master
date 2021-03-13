@@ -4,6 +4,7 @@ from typing import Optional
 from discord.ext import commands
 import random
 import json
+from discord.ext.commands import BucketType
 
 
 class Economy(commands.Cog):
@@ -129,8 +130,19 @@ class Economy(commands.Cog):
         await self.update_bank(member, amount, "bank")
         await ctx.send(f"You gave {amount} coins to {member}!")
 
+    @commands.command()
+    @commands.cooldown(1, 86400, type=BucketType.user)
+    async def daily(self, ctx):
+        await self.open_account(ctx.author)
+
+        earnings = 500
+
+        await self.update_bank(ctx.author, earnings, "bank")
+        await ctx.send(f"You got your daily coins, see you in 24 hours.")
+
     # Gamble commands
     @commands.command()
+    @commands.cooldown(1, 60, type=BucketType.user)
     async def beg(self, ctx):
         await self.open_account(ctx.author)
 

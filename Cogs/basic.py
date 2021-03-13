@@ -1,6 +1,9 @@
 import time
+import random
 from discord.ext import commands
+from discord.ext.commands import MissingPermissions
 import discord
+
 
 
 class Basic(commands.Cog):
@@ -8,9 +11,23 @@ class Basic(commands.Cog):
         self.bot = bot
 
     @commands.Cog.listener()
-    async def on_command_error(self, ctx, ex):
-        print(ex)
-        await ctx.send("Please check with $help the usage of this command")
+    async def on_command_error(self, ctx, error):
+        print(error)
+
+        if isinstance(error, commands.CommandOnCooldown):
+            em = discord.Embed(title=f"Slow down 🤯",
+                               description=f'That command is on cooldown. Try again in: \n ``{error.retry_after:.2f} sec``.',
+                               color=random.randint(0, 0xffffff))
+            await ctx.send(embed=em)
+
+        elif isinstance(error, MissingPermissions):
+            em = discord.Embed(title=f"Missing permissions",
+                               description=f"I'm sorry, you haven't permissions for that 🥺.",
+                               color=random.randint(0, 0xffffff))
+            await ctx.send(embed=em)
+
+        else:
+            await ctx.send("Please check with $help the usage of this command")
 
     @commands.command(brief="The bot developer")
     async def developer(self, ctx):
@@ -28,7 +45,6 @@ class Basic(commands.Cog):
         await ctx.channel.send("https://imgur.com/a/BobfAHs")
         time.sleep(1)
         await ctx.channel.send("spaß")
-
 
 
 def setup(bot):
