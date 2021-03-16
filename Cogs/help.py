@@ -17,7 +17,7 @@ class Config(commands.Cog):
             embed.add_field(name=":camera: Image", value="`$help image`", inline=True)
             embed.add_field(name=":joy: Memes", value="`$help meme`", inline=True)
             embed.add_field(name=":smile: Fun", value="`$help fun`", inline=True)
-            embed.add_field(name=":game_die: Gamble", value="`$help gamble`", inline=True)
+            embed.add_field(name=":moneybag: Economy", value="`$help economy`", inline=True)
             embed.add_field(name=":tools: Utility", value="`$help utility`", inline=True)
             embed.add_field(name=":gear:  Config", value="`$help config`", inline=True)
             embed.set_footer(text="use $ before each command!")
@@ -50,9 +50,10 @@ class Config(commands.Cog):
             embed.set_footer(text="use $ before each command!")
             await ctx.send(embed=embed)
 
-        elif category == "gamble":
-            embed = discord.Embed(title=":game_die: Gamble commands", colour=random.randint(0, 0xffffff))
-            embed.add_field(name="Commands:", value="`random`, `dice`, `coin`", inline=True)
+        elif category == "economy":
+            embed = discord.Embed(title=":moneybag: Gamble commands", colour=random.randint(0, 0xffffff))
+            embed.add_field(name="Commands:", value="`balance`, `withdraw`, `bank`, `slots`, `send`, `rob`, "
+                                                    "`leaderboard` `beg`, `daily`, `coin`", inline=True)
             embed.set_footer(text="use $ before each command!")
             await ctx.send(embed=embed)
 

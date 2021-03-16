@@ -1,5 +1,5 @@
-from discord import Member
 import discord
+from discord import Member
 from typing import Optional
 from discord.ext import commands
 import random
@@ -19,8 +19,8 @@ class Economy(commands.Cog):
             return False
         else:
             users[str(user.id)] = {}
-            users[str(user.id)]["wallet"] = 500
-            users[str(user.id)]["bank"] = 500
+            users[str(user.id)]["wallet"] = 0
+            users[str(user.id)]["bank"] = 1000
 
         f = open("D:\\MeineDaten\\Programmieren\\Python\\Projekte\\Discord_Bot\\Main_Bot\\data\\bank.json", "w")
         json.dump(users, f)
@@ -60,7 +60,9 @@ class Economy(commands.Cog):
         em.set_thumbnail(url=target.avatar_url)
         await ctx.send(embed=em)
 
-    @commands.command()
+        return wallet_amt
+
+    @commands.command(alias="wd")
     async def withdraw(self, ctx, amount=None):
         await self.open_account(ctx.author)
 
@@ -92,19 +94,25 @@ class Economy(commands.Cog):
             return
 
         bal = await self.update_bank(ctx.author)
+        if amount == "all":
+            amount = bal[0]
+            amount = int(amount)
 
-        amount = int(amount)
-        if amount > bal[0]:
+        if int(amount) > bal[0]:
             await ctx.send("You don't have that much money")
             return
 
-        if amount < 0:
+        if int(amount) < 0:
             await ctx.send("Amount must be positive")
             return
 
-        await self.update_bank(ctx.author, -1 * amount)
-        await self.update_bank(ctx.author, amount, "bank")
+
+        await self.update_bank(ctx.author, -1 * int(amount), "wallet")
+        await self.update_bank(ctx.author, int(amount), "bank")
         await ctx.send(f"You deposited {amount} coins!")
+
+
+
 
     @commands.command()
     async def send(self, ctx, member: discord.Member, amount=None):
@@ -146,7 +154,7 @@ class Economy(commands.Cog):
     async def beg(self, ctx):
         await self.open_account(ctx.author)
 
-        earnings = random.randint(-100, 175)
+        earnings = random.randint(-50, 175)
         if earnings >= 0:
             await ctx.send(f"You won {earnings} coins!!")
         else:
@@ -159,7 +167,7 @@ class Economy(commands.Cog):
         await self.open_account(ctx.author)
 
         if predict is None:
-            await ctx.send("Please make sure your input is correct. Example ``$coin 100 head``")
+            await ctx.send("Please make sure your input is correct. Example ``$coin 100 head/tails``")
             return
 
         bal = await self.update_bank(ctx.author)
@@ -183,8 +191,8 @@ class Economy(commands.Cog):
             await self.update_bank(ctx.author, 2 * amount)
             await ctx.send(f"You won {2 * amount} Coins!!")
         else:
-            await self.update_bank(ctx.author, -1 * amount)
-            await ctx.send(f"You lost {-1 * amount} Coins!!")
+            await self.update_bank(ctx.author, -2 * amount)
+            await ctx.send(f"You lost {-2 * amount} Coins!!")
 
     @commands.command()
     async def slots(self, ctx, amount=None):
@@ -211,18 +219,23 @@ class Economy(commands.Cog):
 
             final.append(a)
 
-        await ctx.send(str(final))
+        embed = discord.Embed(title=f"{ctx.author}'s slot machine", colour=random.randint(0, 0xffffff))
 
         if final[0] == final[1] == final[2]:
-            await self.update_bank(ctx.author, 5 * amount)
-            await ctx.send(f"You won {5 * amount} Coins!!")
-        else:
-            await self.update_bank(ctx.author, -1 * amount)
-            await ctx.send(f"You lost {-1 * amount} Coins!!")
+            final = str(', '.join(final))
+            embed.add_field(name=final, value=f"You won {10 * amount} Coins!!")
+            await self.update_bank(ctx.author, 10 * amount)
 
+        else:
+            final = str(', '.join(final))
+            embed.add_field(name=final, value=f"You lost {-1 * amount} Coins!!")
+            await self.update_bank(ctx.author, -1 * amount)
+
+        await ctx.send(embed=embed)
 
 
     @commands.command()
+    @commands.cooldown(1, 60, type=BucketType.user)
     async def rob(self, ctx, member: discord.Member):
         await self.open_account(ctx.author)
         await self.open_account(member)
@@ -238,6 +251,34 @@ class Economy(commands.Cog):
         await self.update_bank(ctx.author, earnings)
         await self.update_bank(member, -1 * earnings)
         await ctx.send(f"You roobed and got {earnings} coins from {member}!")
+
+    @commands.command(alias="lb")
+    async def leaderboard(self, ctx, x=5):
+        users = await self.get_bank_data()
+        leader_board = {}
+        total = []
+        for user in users:
+            name = int(user)
+            total_amount = users[user]["wallet"] + users[user]["bank"]
+            leader_board[total_amount] = name
+            total.append(total_amount)
+
+        total = sorted(total, reverse=True)
+
+        em = discord.Embed(title=f"Top {x} Richest People",
+                           description="This is decided on the basis of raw money in the bank and wallet",
+                           color=random.randint(0, 0xffffff))
+        index = 1
+        for amt in total:
+            id_ = leader_board[amt]
+            member = await self.bot.fetch_user(id_)
+            name = member.name
+            em.add_field(name=f"{index}. {name}", value=f"{amt}", inline=False)
+            if index == x:
+                break
+            else:
+                index += 1
+        await ctx.send(embed=em)
 
 
 def setup(bot):
