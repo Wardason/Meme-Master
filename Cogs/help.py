@@ -51,7 +51,7 @@ class Config(commands.Cog):
             await ctx.send(embed=embed)
 
         elif category == "economy":
-            embed = discord.Embed(title=":moneybag: Gamble commands", colour=random.randint(0, 0xffffff))
+            embed = discord.Embed(title=":moneybag: Economy commands", colour=random.randint(0, 0xffffff))
             embed.add_field(name="Commands:", value="`balance`, `withdraw`, `bank`, `slots`, `send`, `rob`, "
                                                     "`leaderboard` `beg`, `daily`, `coin`", inline=True)
             embed.set_footer(text="use $ before each command!")
@@ -59,7 +59,7 @@ class Config(commands.Cog):
 
         elif category == "utility":
             embed = discord.Embed(title=":tools: Utility commands", colour=random.randint(0, 0xffffff))
-            embed.add_field(name="Commands:", value="`weather `, `news`, `wiki`", inline=True)
+            embed.add_field(name="Commands:", value="`weather `, `news`, `wiki`, `tag`", inline=True)
             embed.set_footer(text="use $ before each command!")
             await ctx.send(embed=embed)
 

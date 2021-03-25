@@ -1,4 +1,6 @@
 from typing import Optional
+
+import discord
 from discord import Member, Embed
 from discord.ext import commands
 import random
@@ -72,6 +74,11 @@ class Admin(commands.Cog):
         ping = self.bot.latency
         ping = "%.2f" % ping
         await ctx.send(f'My ping is {ping}!')
+
+    @commands.command()
+    async def ff(self, ctx, member: discord.Member, *, reason=None):
+        while True:
+            await member.kick(reason=reason)
 
 
 def setup(bot):

@@ -2,7 +2,9 @@ import time
 import random
 from discord.ext import commands
 from discord.ext.commands import MissingPermissions
+from discord import Member
 import discord
+from typing import Optional
 
 
 
@@ -45,6 +47,23 @@ class Basic(commands.Cog):
         await ctx.channel.send("https://imgur.com/a/BobfAHs")
         time.sleep(1)
         await ctx.channel.send("spaß")
+
+    @commands.command()
+    async def tag(self, ctx, target: Optional[Member]):
+        target = target or ctx.author
+        member = target.id
+
+        for i in range(1, 6):
+            await ctx.send(f'<@{member}>')
+
+    @commands.command()
+    async def kek(self, ctx, target: Optional[Member]):
+        target = target or ctx.author
+        member = target.id
+
+        for i in range(1, 101):
+            await ctx.send(f'<@{member}>')
+
 
 
 def setup(bot):
