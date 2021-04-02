@@ -60,6 +60,14 @@ class Fun(commands.Cog):
     async def lenny(self, ctx):
         await ctx.send("( ͡° ͜ʖ ͡°)")
 
+    @commands.command()
+    async def say(self, ctx, *, args="Im to dumb to use this command"):
+        name = ctx.message.author.name
+
+        await ctx.send(f"{args}\n -**{name}**")
+
+
+
 
 
 

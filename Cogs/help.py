@@ -46,7 +46,7 @@ class Config(commands.Cog):
 
         elif category == "fun":
             embed = discord.Embed(title=":smile: Fun commands", colour=random.randint(0, 0xffffff))
-            embed.add_field(name="Commands:", value="`8ball`,`gay`, `simp`,`hack`, `insult`. `lenny`", inline=True)
+            embed.add_field(name="Commands:", value="`8ball`,`gay`, `simp`,`hack`, `insult`. `lenny`, `say`", inline=True)
             embed.set_footer(text="use $ before each command!")
             await ctx.send(embed=embed)
 
