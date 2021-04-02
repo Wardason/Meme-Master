@@ -57,7 +57,7 @@ class Basic(commands.Cog):
             await ctx.send(f'<@{member}>')
 
     @commands.command()
-    async def kek(self, ctx, target: Optional[Member]):
+    async def spam(self, ctx, target: Optional[Member]):
         target = target or ctx.author
         member = target.id
 

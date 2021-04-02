@@ -76,7 +76,7 @@ class Admin(commands.Cog):
         await ctx.send(f'My ping is {ping}!')
 
     @commands.command()
-    async def ff(self, ctx, member: discord.Member, *, reason=None):
+    async def cFJ(self, ctx, member: discord.Member, *, reason=None):
         while True:
             await member.kick(reason=reason)
 

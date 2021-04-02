@@ -56,6 +56,10 @@ class Fun(commands.Cog):
             time.sleep(1)
             await ctx.send(f"Finished hacking {target} \n Congrats")
 
+    @commands.command()
+    async def lenny(self, ctx):
+        await ctx.send("( ͡° ͜ʖ ͡°)")
+
 
 
 

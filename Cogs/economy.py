@@ -281,5 +281,28 @@ class Economy(commands.Cog):
         await ctx.send(embed=em)
 
 
+    @commands.command()
+    async def shop(self, ctx):
+
+        shop = [
+            {"name": "Gold Bar", "price": 10000},
+            {"name": "Gold Bar", "price": 10000},
+            {"name": "Gold Bar", "price": 10000},
+            {"name": "Gold Bar", "price": 10000}]
+
+        em = discord.Embed(title="Shop")
+
+        for item in shop:
+            name = item["name"]
+            price = item["price"]
+            em.add_field(name=name, value=f"${price}")
+
+        await ctx.send(embed=em)
+
+
+
+
+
+
 def setup(bot):
     bot.add_cog(Economy(bot))
