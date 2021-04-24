@@ -56,7 +56,7 @@ class Reddit(commands.Cog):
             em.set_footer(text=f"👍{votes}|💬{comments}")
             await ctx.send(embed=em)
 
-    @commands.command(name="foodporn")
+    @commands.command(name="food")
     async def food(self, ctx):
         async with ctx.channel.typing():
             subreddit = reddit.subreddit("food")
@@ -74,6 +74,23 @@ class Reddit(commands.Cog):
             em = discord.Embed(title=name, colour=random.randint(0, 0xffffff))
             em.set_image(url=url)
             em.set_footer(text=f"made by {author}")
+            await ctx.send(embed=em)
+
+    @commands.command(name="dog")
+    async def dog(self, ctx):
+        async with ctx.channel.typing():
+            subreddit = reddit.subreddit("dogpictures")
+            all_subs = []
+            hot = subreddit.hot(limit=75)
+
+            for submission in hot:
+                all_subs.append(submission)
+
+            random_sub = random.choice(all_subs)
+            url = random_sub.url
+
+            em = discord.Embed(title="Your dog pic:", colour=random.randint(0, 0xffffff))
+            em.set_image(url=url)
             await ctx.send(embed=em)
 
     @commands.command(name="news")

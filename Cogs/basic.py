@@ -29,7 +29,7 @@ class Basic(commands.Cog):
             await ctx.send(embed=em)
 
         else:
-            await ctx.send("Please check with $help the usage of this command")
+            await ctx.send("Please check with #help the usage of this command")
 
     @commands.command(brief="The bot developer")
     async def developer(self, ctx):
@@ -41,6 +41,10 @@ class Basic(commands.Cog):
     @commands.command(brief="F for lasse")
     async def lucylover(self, ctx):
         await ctx.channel.send("https://imgur.com/ndrIfTz")
+
+    @commands.command(brief="")
+    async def rxdin(self, ctx):
+        await ctx.channel.send("https://imgur.com/a/4eiCj8T")
 
     @commands.command(name="knecht")
     async def bene(self, ctx):

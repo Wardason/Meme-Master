@@ -21,17 +21,17 @@ class Images(commands.Cog):
                     embed.set_footer(text="http://random.cat/")
                     await ctx.send(embed=embed)
 
-    @commands.command(brief="Sends a random dog image")
-    async def dog(self, ctx):
-        async with ctx.channel.typing():
-            async with aiohttp.ClientSession() as cs:
-                async with cs.get("https://random.dog/woof.json") as r:
-                    data = await r.json()
+    #@commands.command(brief="Sends a random dog image")
+    #async def dog(self, ctx):
+    #    async with ctx.channel.typing():
+    #        async with aiohttp.ClientSession() as cs:
+    #            async with cs.get("https://random.dog/woof.json") as r:
+    #                data = await r.json()
 
-                    embed = discord.Embed(title="Woof", colour=random.randint(0, 0xffffff))
-                    embed.set_image(url=data['url'])
-                    embed.set_footer(text="http://random.dog/")
-                    await ctx.send(embed=embed)
+    #                embed = discord.Embed(title="Woof", colour=random.randint(0, 0xffffff))
+    #                embed.set_image(url=data['url'])
+    #                embed.set_footer(text="http://random.dog/")
+    #                await ctx.send(embed=embed)
 
     @commands.command(brief="Sends a random panda image")
     async def panda(self, ctx):

@@ -14,7 +14,7 @@ class Weather(commands.Cog):
         self.bot = bot
 
     @commands.command(name="weather")
-    async def weather(self, ctx, location=None):
+    async def weather(self, ctx, *, location=None):
         try:
             if location is None:
                 await ctx.send("Please write after weather the city name. Example: `$weather Berlin`")

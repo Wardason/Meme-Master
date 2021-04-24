@@ -22,12 +22,12 @@ class Economy(commands.Cog):
             users[str(user.id)]["wallet"] = 0
             users[str(user.id)]["bank"] = 1000
 
-        f = open("D:\\MeineDaten\\Programmieren\\Python\\Projekte\\Discord_Bot\\Main_Bot\\data\\bank.json", "w")
+        f = open("D:\\MeineDaten\\Programmieren\\Python\\Projekte\\Discord_Bot\\Meme Master Testing\\data\\bank.json", "w")
         json.dump(users, f)
         return True
 
     async def get_bank_data(self):
-        f = open("D:\\MeineDaten\\Programmieren\\Python\\Projekte\\Discord_Bot\\Main_Bot\\data\\bank.json", "r")
+        f = open("D:\\MeineDaten\\Programmieren\\Python\\Projekte\\Discord_Bot\\Meme Master Testing\\data\\bank.json", "r")
         users = json.load(f)
         return users
 
@@ -36,7 +36,7 @@ class Economy(commands.Cog):
 
         users[str(user.id)][mode] += change
 
-        f = open("D:\\MeineDaten\\Programmieren\\Python\\Projekte\\Discord_Bot\\Main_Bot\\data\\bank.json", "w")
+        f = open("D:\\MeineDaten\\Programmieren\\Python\\Projekte\\Discord_Bot\\Meme Master Testing\\data\\bank.json", "w")
         json.dump(users, f)
 
         bal = users[str(user.id)]["wallet"], users[str(user.id)]["bank"]
