@@ -29,7 +29,7 @@ Meme Master is a verified fun discord bot with loads of functionality
 ![top.gg](https://github.com/Wardason/Meme-Master/blob/master/Screenshots/topgg.PNG)
 ![info](https://github.com/Wardason/Meme-Master/blob/master/Screenshots/info.PNG)
 
-for more photos have a look on the screenshots folder
+for more photos have a look at the screenshots folder
 
 ## Outro 
 If you have any question about the usage of the bot or the made of the bot feel free to ask. If you like the bot you can support him over this [link](https://top.gg/bot/782274959849684993/vote). 
