@@ -1,5 +1,5 @@
 # Meme-Master
-Meme Master is a verified fun discord bot with loads of functionality
+Meme Master is a verified fun discord bot, who is used on over 750 servers, with loads of functionality
 
 ## How can I use the bot
 1. Go to https://top.gg/de/bot/782274959849684993
